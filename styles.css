@@ -1,0 +1,70 @@
+:root {
+  --background: #ffffff;
+  --dark: #6fe9ff49;
+  --liquid: blue;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--background);
+}
+
+.box {
+  /* content: url(/images/st-white.svg); */
+  position: relative;
+  background: var(--dark);
+  border: var(--dark);
+  height: 8rem;
+  width: 8rem;
+  outline: 0;
+  overflow: none; /* Set to none to see fill square outside box */
+}
+.box::before {
+  content: "";
+  position: absolute;
+  bottom: -50%; /*Center sauare */
+  left: -50%; /* Center sauare */
+  height: 200%;
+  width: 200%;
+  background-color: var(--background);
+  border-radius: 35%; /* Smooth edges to appear like liquid */
+  animation: spin 10s ease-in-out infinite; /* Set to forwards to freeze on last frame */
+}
+.box::after {
+  content: "";
+  position: absolute;
+  bottom: -50%; /*Center sauare */
+  left: -50%; /* Center sauare */
+  height: 200%;
+  width: 200%;
+  background-color: var(--background);
+  border-radius: 35%; /* Smooth edges to appear like liquid */
+  animation: spinreverse 10s reverse infinite; /* Set to forwards to freeze on last frame */
+}
+
+@keyframes spin {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-100%) rotate(400deg);
+  }
+}
+
+@keyframes spinreverse {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-100%) rotate(-400deg);
+  }
+}
